@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import Panel from "./admin"
+import CatsList from "./components/CatsList"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <Routes>
+        <Route path="/admin" element={<Panel />} />
+        <Route path="/" element={<CatsList />} />
+      </Routes>
+    </Router>
+  )
 }
 
-export default App;
+export default App
+
+// import { useEffect, useState } from "react"
+// import Cat from "./models/Cat"
+
+// function App() {
+//   const [cats, setCats] = useState<Cat[]>([])
+
+//   useEffect(() => {
+//     fetch("http://localhost:3000/cats")
+//       .then((response) => response.json())
+//       .then((data) => setCats(data))
+//       .catch((error) => console.log(error))
+//   }, [])
+
+//   return (
+//     <div>
+//       <h1>Cats</h1>
+//       <ul>
+//         {cats.map((cat) => (
+//           <li key={cat._id}>
+//             <p>Name: {cat.name}</p>
+//             <p>Age: {cat.age}</p>
+//           </li>
+//         ))}
+//       </ul>
+//     </div>
+//   )
+// }
+
+// export default App
